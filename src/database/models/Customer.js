@@ -43,6 +43,7 @@ const CustomerSchema = new Schema(
         delete ret.__v;
       },
     },
+    timestamps: true,
   }
 );
 

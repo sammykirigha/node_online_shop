@@ -1,5 +1,5 @@
 const { createLogger, transports } = require("winston");
-const { AppError } = require("./app-errors");
+const { AppError } = require("./app-error");
 
 const LogErrors = createLogger({
   transports: [

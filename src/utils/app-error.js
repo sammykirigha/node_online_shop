@@ -27,7 +27,7 @@ class AppError extends Error {
 }
 
 //api Specific errors
-class APIError extends APIError {
+class APIError extends AppError {
   constructor(
     name,
     statusCode = STATUS_CODES.INTERNAL_ERROR,

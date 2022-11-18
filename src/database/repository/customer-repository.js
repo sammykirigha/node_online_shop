@@ -67,24 +67,24 @@ class CustomerRepository {
     }
   }
 
-  // async FindCustomerById({ id }) {
-  //   try {
-  //     console.log("============");
-  //     const existingCustomer = await CustomerModel.findById(id).populate(
-  //       "address wishlist orders cart.product"
-  //     );
+  async FindCustomerById({ id }) {
+    try {
+      console.log("============");
+      const existingCustomer = await CustomerModel.findById(id).populate(
+        "address wishlist orders cart.product"
+      );
 
-  //     console.log("pop", existingCustomer);
-  //     return existingCustomer;
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new APIError(
-  //       "API Error",
-  //       STATUS_CODES.INTERNAL_ERROR,
-  //       "Unable to Find Customer!!!!!!!"
-  //     );
-  //   }
-  // }
+      console.log("pop", existingCustomer);
+      return existingCustomer;
+    } catch (err) {
+      console.log(err);
+      throw new APIError(
+        "API Error",
+        STATUS_CODES.INTERNAL_ERROR,
+        "Unable to Find Customer!!!!!!!"
+      );
+    }
+  }
 
   async GetWishlist(customerId) {
     try {

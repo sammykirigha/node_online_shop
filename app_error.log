@@ -90,3 +90,5 @@
 {"level":"error","message":"Fri Nov 18 2022 22:46:29 GMT+0300 (East Africa Time)-{}","private":true}
 {"level":"error","message":"Fri Nov 18 2022 22:47:52 GMT+0300 (East Africa Time)-{}","private":true}
 {"level":"error","message":"Fri Nov 18 2022 22:50:38 GMT+0300 (East Africa Time)-{}","private":true}
+{"level":"error","message":"Sat Nov 19 2022 00:54:10 GMT+0300 (East Africa Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}
+{"level":"error","message":"Sat Nov 19 2022 00:54:55 GMT+0300 (East Africa Time)-{\"name\":\"Data Not found\",\"statusCode\":{},\"isOperational\":true}","private":true}

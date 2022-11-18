@@ -83,14 +83,14 @@ class CustomerService {
     }
   }
 
-  // async GetProfile(id) {
-  //   try {
-  //     const customer = await this.repository.FindCustomerById({ id });
-  //     return FormateData(customer);
-  //   } catch (err) {
-  //     throw new APIError("Data Not found", err);
-  //   }
-  // }
+  async GetProfile(id) {
+    try {
+      const customer = await this.repository.FindCustomerById({ id });
+      return FormateData(customer);
+    } catch (err) {
+      throw new APIError("Data Not found", err);
+    }
+  }
 
   async GetWishList(customerId) {
     try {

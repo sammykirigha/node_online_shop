@@ -19,7 +19,13 @@ class ProductService {
   async GetProducts() {
     try {
       const products = await this.repository.Products();
-      return FormateData(products);
+      let categories = {};
+
+      products.map(({ type }) => {
+        categories[type] = type;
+      });
+
+      return FormateData({ products, categories: Object.keys(categories) });
     } catch (error) {
       throw new APIError("Data Not found");
     }
@@ -30,6 +36,26 @@ class ProductService {
       const product = await this.repository.FindById(id);
       return FormateData(product);
     } catch (error) {
+      throw new APIError("Data Not found");
+    }
+  }
+
+  async GetProductByCategory(category) {
+    try {
+      const product = await this.repository.FindByCategory(category);
+      return FormateData(product);
+    } catch (error) {
+      console.log(error);
+      throw new APIError("Data Not found");
+    }
+  }
+
+  async GetProductsBySelectedIds(selectedIds) {
+    try {
+      const products = await this.repository.FindSelectedProducts(selectedIds);
+      return FormateData(products);
+    } catch (error) {
+      console.log(error);
       throw new APIError("Data Not found");
     }
   }

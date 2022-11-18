@@ -49,8 +49,37 @@ class ProductRepository {
 
   async FindById(id) {
     try {
-      const product = await ProductModel.findById(id);
-      return product;
+      const result = await ProductModel.findById(id);
+      return result;
+    } catch (error) {
+      throw APIError(
+        "API Error",
+        STATUS_CODES.INTERNAL_ERROR,
+        "Unable to Create Product"
+      );
+    }
+  }
+
+  async FindByCategory(category) {
+    try {
+      const products = await ProductModel.find({ type: category });
+      return products;
+    } catch (err) {
+      throw APIError(
+        "API Error",
+        STATUS_CODES.INTERNAL_ERROR,
+        "Unable to Create Product"
+      );
+    }
+  }
+
+  async FindSelectedProducts(selectedIds) {
+    try {
+      const products = await ProductModel.find()
+        .where("_id")
+        .in(selectedIds)
+        .exec();
+      return products;
     } catch (error) {
       throw APIError(
         "API Error",

@@ -1,6 +1,6 @@
 module.exports = {
   CustomerModel: require("./Customer"),
-  // ProductModel: require("./Product"),
+  ProductModel: require("./Product"),
   // OrderModel: require("./Order"),
-  // AddressModel: require("./Address"),
+  AddressModel: require("./Address"),
 };

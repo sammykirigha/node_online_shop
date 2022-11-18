@@ -1,5 +1,5 @@
 const express = require("express");
-const { customer } = require("./api");
+const { customer, product } = require("./api");
 const cors = require("cors");
 const ErrorHandler = require("./utils/error-handler");
 
@@ -11,6 +11,7 @@ module.exports = async (app) => {
 
   //api
   customer(app);
+  product(app);
 
   app.use(ErrorHandler);
 };

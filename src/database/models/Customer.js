@@ -11,27 +11,31 @@ const CustomerSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "address",
-        require: true,
+        required: true,
       },
     ],
     cart: [
       {
-        product: { type: Schema.Types.ObjectId, ref: "product", require: true },
-        unit: { type: Number, require: true },
+        product: {
+          type: Schema.Types.ObjectId,
+          ref: "product",
+          required: true,
+        },
+        unit: { type: Number, required: true },
       },
     ],
     wishlist: [
       {
         type: Schema.Types.ObjectId,
         ref: "product",
-        require: true,
+        required: true,
       },
     ],
     orders: [
       {
         type: Schema.Types.ObjectId,
         ref: "order",
-        require: true,
+        required: true,
       },
     ],
   },

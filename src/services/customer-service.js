@@ -64,6 +64,33 @@ class CustomerService {
       throw new APIError("Data Not found", err);
     }
   }
+
+  async CreateAddress(_id, userInputs) {
+    const { street, postalCode, city, country } = userInputs;
+
+    try {
+      const addressResult = await this.repository.CreateAddress({
+        _id,
+        street,
+        postalCode,
+        city,
+        country,
+      });
+      console.log("address", addressResult);
+      return FormateData(addressResult);
+    } catch (err) {
+      throw new APIError("Data Not found", err);
+    }
+  }
+
+  // async GetProfile(id) {
+  //   try {
+  //     const customer = await this.repository.FindCustomerById({ id });
+  //     return FormateData(customer);
+  //   } catch (err) {
+  //     throw new APIError("Data Not found", err);
+  //   }
+  // }
 }
 
 module.exports = CustomerService;

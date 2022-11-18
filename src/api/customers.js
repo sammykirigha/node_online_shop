@@ -1,4 +1,5 @@
 const CustomerService = require("../services/customer-service");
+const UserAuth = require("./middlewares/auth");
 
 module.exports = (app) => {
   const service = new CustomerService();
@@ -22,4 +23,34 @@ module.exports = (app) => {
       next(err);
     }
   });
+
+  app.post("/customer/address", UserAuth, async (req, res, next) => {
+    try {
+      const { _id } = req.user;
+
+      const { street, city, postalCode, country } = req.body;
+
+      const { data } = await service.CreateAddress(_id, {
+        street,
+        city,
+        postalCode,
+        country,
+      });
+
+      console.log("data", data);
+      return res.json(data);
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  // app.get("/customer/profile", UserAuth, async (req, res, next) => {
+  //   try {
+  //     const { _id } = req.user;
+  //     const { data } = await service.GetProfile({ _id });
+  //     return res.json(data);
+  //   } catch (err) {
+  //     next(err);
+  //   }
+  // });
 };

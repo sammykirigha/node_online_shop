@@ -26,22 +26,23 @@ module.exports.GenerateSignature = async (payload) => {
 };
 
 module.exports.ValidateSignature = async (req) => {
-  const signature = req.get("Authorization");
-  console.log(signature);
+  const authBearer = req.get("Authorization");
 
-  if (signature) {
-    const payload = await jwt.verify(signature.split(" ")[1], APP_SECRET);
-    req.user = payload;
-    return true;
-  }
+  if (!authBearer) return false;
 
-  return false;
+  const token = authBearer.split(" ")[1];
+
+  if (!token) return false;
+
+  const payload = await jwt.verify(token, APP_SECRET);
+  req.user = payload;
+  return true;
 };
 
 module.exports.FormateData = (data) => {
   if (data) {
     return { data };
   } else {
-    throw new Error("Data Not found");
+    return { data: null };
   }
 };
